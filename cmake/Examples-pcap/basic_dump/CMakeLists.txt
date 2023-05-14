@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-set(TARGET_NAME macaddress)
+set(TARGET_NAME basic_dump)
 project(${TARGET_NAME} VERSION 1.0.0)
 
 message(STATUS ${PROJECT_VERSION})
