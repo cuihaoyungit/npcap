@@ -34,10 +34,18 @@ else()
 	add_compile_definitions(WPCAP)
 endif()
 
-
 # add the executable
 add_executable(${TARGET_NAME} basic_dump.c)
 
 set_property(TARGET ${TARGET_NAME} PROPERTY FOLDER "Examples-pcap")
 
 target_include_directories(${TARGET_NAME} PUBLIC "${PROJECT_BINARY_DIR}")
+
+set(SolutionDir ${PROJECT_SOURCE_DIR})
+message(STATUS "SolutionDir=" ${SolutionDir})
+
+target_include_directories(${TARGET_NAME} PRIVATE "${PROJECT_BINARY_DIR}")
+target_include_directories(${TARGET_NAME} PRIVATE "${SolutionDir}")
+target_include_directories(${TARGET_NAME} PRIVATE "${SolutionDir}/../../Include")
+link_directories("${SolutionDir}/../../Lib")
+target_link_libraries(${TARGET_NAME} PRIVATE "${SolutionDir}/../../Lib/x64/wpcap.lib")
