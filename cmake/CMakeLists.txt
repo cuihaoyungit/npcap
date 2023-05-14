@@ -23,7 +23,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # https://blog.csdn.net/weixin_39766005/article/details/122439200
 if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE DEBUG STRING "Build Type" FORCE)
+    set(CMAKE_BUILD_TYPE DEBUG)
     add_compile_definitions(Debug)
 	add_compile_definitions(_Debug)
 endif()
@@ -56,16 +56,6 @@ endif()
 # make sure __cplusplus is defined when using msvc and enable parallel build
 if(MSVC)
     string(APPEND CMAKE_CXX_FLAGS " /Zc:__cplusplus /MP")
-endif()
-
-# Environment var setting
-# QT_DIR
-# E:\Qt\Qt5.15\5.15.2\msvc2019_64\bin
-if(DEFINED ENV{QT_DIR})
-    message(STATUS, "current used qt: ${QT_DIR}")
-    message(STATUS, $ENV{QT_DIR})
-else()
-    message(STATUS, "Not found envirment QT_DIR")
 endif()
 
 if (CMAKE_BINARY_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
@@ -142,32 +132,7 @@ if(MSVC)
     add_compile_options(-DNOMINMAX)					# undefine windows.h MAX && MIN macros cause it cause conflicts with std::min && std::max functions
 endif()
 
-# Environment variable
-if(DEFINED ENV{DEVELOP_DIR})
-	message(STATUS "$ENV{DEVELOP_DIR}")
-else()
-	set(ENV{DEVELOP_DIR} "~/DevelopDir")
-endif()
-
-option(BUILD_SINGLE_SERVER "Build singleton service." OFF)
-
-# database type enum
-# mysql=0 sqlserver=2 sqlite=3 redis/memcached=4
-option(BUILD_SQLSERVER "Build with mysql." OFF)
-
-# warning options
-option(SERVER_BUILD_WARNINGS "Enable compiler warnings" OFF)
-
-# build by root cmakelist
-option(BUILD_ROOT "Build from root dir cmakelist " ON)
-
 add_subdirectory(Examples-pcap)
-
-if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
-    install(FILES "start.bat" "stop.bat" DESTINATION bin)
-elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-    install(FILES "linux_start.sh" "linux_stop.sh" DESTINATION bin)
-endif()
 
 # ------------------------------------------------------------------------
 # cmake build
