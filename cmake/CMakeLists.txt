@@ -161,6 +161,7 @@ option(SERVER_BUILD_WARNINGS "Enable compiler warnings" OFF)
 # build by root cmakelist
 option(BUILD_ROOT "Build from root dir cmakelist " ON)
 
+add_subdirectory(Examples-pcap)
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     install(FILES "start.bat" "stop.bat" DESTINATION bin)
