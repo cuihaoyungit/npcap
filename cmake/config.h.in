@@ -1,0 +1,12 @@
+#ifndef INCLUDE_CONFIG_H_IN
+#define INCLUDE_CONFIG_H_IN
+
+// the configured options and settings for Tutorial
+#define SERVER_VERSION_MAJOR @RPGServer_VERSION_MAJOR@
+#define SERVER_VERSION_MINOR @RPGServer_VERSION_MINOR@
+#define SERVER_VERSION_PATCH @RPGServer_VERSION_PATCH@
+
+#define PROJECT_VER "@PROJECT_VERSION@"
+
+
+#endif // INCLUDE_CONFIG_H_IN
