@@ -1,11 +1,3 @@
-#ifdef _MSC_VER
-/*
- * we do not want the warnings about the old deprecated and unsecure CRT functions
- * since these examples can be compiled under *nix as well
- */
-#define _CRT_SECURE_NO_WARNINGS
-#endif
-
 #include <pcap.h>
 #include <stdio.h>
 #include <time.h>
